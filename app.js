@@ -13,6 +13,8 @@ const app = express();
 
 app.use(helmet());
 app.set(`view engine`, "pug");
+app.use("/uploads", express.static("uploads"));
+//built-in middleware to give files from directory. 임시처리 static으로 사용되어서는 안된다. (차후 수정)
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
