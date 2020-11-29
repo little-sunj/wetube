@@ -4,17 +4,26 @@ import Video from "../models/Video";
 
 export const home = async(req, res) => {   
     try {
-        const videos = await Video.find({}); //await : asynce와 함께 사용.
+        const videos = await Video.find({}).sort({_id:-1}); 
+        //await : asynce와 함께 사용.  -1 : 역순으로 정렬
         res.render("home", {pageTitle: "Home", videos});
     } catch (error) {
         console.log(error);
         res.render("home", {pageTitle: "Home", videos: []});
     }
 };
-export const search=(req, res) => {
+export const search=async(req, res) => {
     const { 
         query : {term : searchingBy } // = req.query.term
     } = req; 
+    let videos = [];
+    try {
+        videos = await Video.find({
+            title:{ $regex: searchingBy, $options:"i"}
+        });
+    }catch(error) {
+        console.log(error);
+    }
     res.render("search", {pageTitle: "Search" , searchingBy, videos}); 
 };
 export const getUpload = (req, res) => {
