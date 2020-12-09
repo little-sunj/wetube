@@ -11,5 +11,21 @@ export const localsMiddleware = (req, res, next) => {
     next();
 };
 
+export const onlyPublic = (req, res, next) => {
+    if (req.user) {
+        res.redirect(routes.home);
+    } else {
+        next();
+    }
+}
+
+export const onlyPrivate = (req, res, next) => {
+    if (req.user) {
+        next();
+    } else {
+        res.redirect(routes.home);
+    }
+}
+
 export const uploadVideo = multerVideo.single('videoFile'); 
 //하나의 파일만 upload가능 'videoFile' > html내 요소의 name값
