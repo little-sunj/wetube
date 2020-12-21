@@ -5,6 +5,8 @@ import { onlyPublic, onlyPrivate } from "../middlewares";
 import { home, search } from "../controllers/videoController";
 import { getJoin, 
     getMe,
+    //facebookLogin,
+    //postFacebookLogin,
     postJoin, 
     getLogin, 
     postLogin, 
@@ -32,5 +34,12 @@ globalRouter.get(
 );
 
 globalRouter.get(routes.me, getMe);
+
+// globalRouter.get(routes.facebook, facebookLogin);
+// globalRouter.get(
+//   routes.facebookCallback,
+//   passport.authenticate("facebook", { failureRedirect: "/login" }),
+//   postFacebookLogin
+// );
 
 export default globalRouter;
