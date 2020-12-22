@@ -3,6 +3,7 @@ import routes from "./routes";
 
 //const multerVideo = multer({dest: "/uploads/videos/"});
 const multerVideo = multer({ dest: "uploads/videos/" });
+const multerAvatar = multer({ dest: "uploads/avatars/" });
 
 export const localsMiddleware = (req, res, next) => {
     res.locals.siteName = 'WeTube';
@@ -29,3 +30,4 @@ export const onlyPrivate = (req, res, next) => {
 
 export const uploadVideo = multerVideo.single('videoFile'); 
 //하나의 파일만 upload가능 'videoFile' > html내 요소의 name값
+export const uploadAvatar = multerAvatar.single('avatar');
