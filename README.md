@@ -7,6 +7,8 @@ Cloning Youtube with Vanilla and NodeJS
 ## USED
 
 nodejs <br/>
+vanillajs <br/>
+mongoDB <br/>
 babel <br/>
 webpack <br/>
 passportJS <br/>
